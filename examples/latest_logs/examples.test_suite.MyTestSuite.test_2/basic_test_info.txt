@@ -1,0 +1,15 @@
+test_suite.py::MyTestSuite::test_2
+--------------------------------------------------------------------
+Last Page: https://xkcd.com/1675/
+  Browser: chrome
+Timestamp: 1629216998  (Unix Timestamp)
+     Date: Tuesday, 17 August 2021
+     Time: 11:16:38 PM  (SE Asia Standard Time, UTC+07:00)
+--------------------------------------------------------------------
+Traceback: File "c:\users\dell\appdata\local\programs\python\python39\lib\unittest\case.py", line 593, in run
+    self._callTestMethod(testMethod)
+  File "c:\users\dell\appdata\local\programs\python\python39\lib\unittest\case.py", line 550, in _callTestMethod
+    method()
+  File "D:\SeleniumBase\examples\test_suite.py", line 19, in test_2
+    raise Exception("FAKE EXCEPTION: This test fails on purpose.")
+Exception: FAKE EXCEPTION: This test fails on purpose.
