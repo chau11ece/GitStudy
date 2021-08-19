@@ -18,3 +18,12 @@ class MyTestClass(BaseCase):
         self.add_tour_step("Thanks for taking this tour!")
         self.export_tour(filename="xkcd_tour.js")  # Exports the tour
         self.play_tour()  # Plays the tour
+
+    def test_setup_fails(self):
+        pass
+
+    def test_call_fails(self):
+        assert 0
+
+    def test_fail2():
+        assert 0
