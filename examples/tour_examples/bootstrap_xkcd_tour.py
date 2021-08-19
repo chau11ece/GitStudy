@@ -17,3 +17,34 @@ class MyTestClass(BaseCase):
         self.add_tour_step("Thanks for taking this tour!")
         self.export_tour(filename="bootstrap_xkcd_tour.js")  # Exports the tour
         self.play_tour()  # Plays the tour
+
+    @pytest.fixture
+    def default_context(self):
+        return {"extra_context": {}}
+
+    @pytest.fixture(
+        params=[
+            {"author": "alice"},
+            {"project_slug": "helloworld"},
+            {"author": "bob", "project_slug": "foobar"},
+        ]
+    )
+    def extra_context(request):
+        return {"extra_context": request.param}
+
+    @pytest.fixture(params=["default", "extra"])
+    def context(request):
+        if request.param == "default":
+            return request.getfuncargvalue("default_context")
+        else:
+            return request.getfuncargvalue("extra_context")
+
+    def test_generate_project(cookies, context):
+        """Call the cookiecutter API to generate a new project from a
+        template.
+        """
+        result = cookies.bake(extra_context=context)
+
+        assert result.exit_code == 0
+        assert result.exception is None
+        assert result.project.isdir()
