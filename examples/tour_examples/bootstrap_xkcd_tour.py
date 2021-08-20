@@ -62,3 +62,6 @@ class MyTestClass(BaseCase):
     )
     def test_eval(self, test_input, expected):
         assert eval(test_input) == expected
+
+    # studying git branching & merging
+    # chautran: git checkout v1.0.24

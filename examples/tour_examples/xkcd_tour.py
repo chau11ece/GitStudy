@@ -56,3 +56,6 @@ class MyTestClass(BaseCase):
     def test_zerodivision(self, a, b):
         with pytest.raises(ZeroDivisionError):
             a / b
+
+    # studying git branching & merging
+    # chautran: git checkout v1.0.24
