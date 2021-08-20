@@ -1,3 +1,4 @@
+import pytest
 from seleniumbase import BaseCase
 
 
@@ -25,10 +26,33 @@ class MyTestClass(BaseCase):
     def test_call_fails(self):
         assert 0
 
-    def test_fail2():
+    def test_fail2(self):
         assert 0
 
     # Hi Chau, something wrong with this testcase; pls help to correct.
+    # @pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6), ("6*9", 42)])
+    # def test_eval(self, expected):
+    #     assert eval(self) == expected
+
+    """
+    Hi American guy, I have fixed the code.
+    --Chau
+    """
+
     @pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6), ("6*9", 42)])
-    def test_eval(self.test_input, expected):
-        assert eval(self.test_input) == expected
+    def test_eval(self, test_input, expected):
+        assert eval(test_input) == expected
+        # self.assertEqual(a, b) -> unittest style
+
+    # a map specifying multiple argument sets for a test method
+    params = {
+        "test_equals": [dict(a=1, b=2), dict(a=3, b=3)],
+        "test_zerodivision": [dict(a=1, b=0)],
+    }
+
+    def test_equals(self, a, b):
+        assert a == b
+
+    def test_zerodivision(self, a, b):
+        with pytest.raises(ZeroDivisionError):
+            a / b
