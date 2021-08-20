@@ -57,5 +57,26 @@ class MyTestClass(BaseCase):
         with pytest.raises(ZeroDivisionError):
             a / b
 
+<<<<<<< HEAD
     # studying git branching & merging
     # chautran: git checkout v1.0.24
+=======
+    # OK thanks Chau
+    @pytest.fixture(
+            params=[
+                pytest.fixture_request("default_context"),
+                pytest.fixture_request("extra_context"),
+            ]
+        )
+    def context(request):
+        """Returns all values for ``default_context``, one-by-one before it
+        does the same for ``extra_context``.
+
+        request.param:
+            - {}
+            - {'author': 'alice'}
+            - {'project_slug': 'helloworld'}
+            - {'author': 'bob', 'project_slug': 'foobar'}
+        """
+        return request.param
+>>>>>>> 842db030bc5aac168f89ddce6bc1328155391a0d
