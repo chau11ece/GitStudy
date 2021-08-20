@@ -56,3 +56,22 @@ class MyTestClass(BaseCase):
     def test_zerodivision(self, a, b):
         with pytest.raises(ZeroDivisionError):
             a / b
+
+    # OK thanks Chau
+    @pytest.fixture(
+            params=[
+                pytest.fixture_request("default_context"),
+                pytest.fixture_request("extra_context"),
+            ]
+        )
+    def context(request):
+        """Returns all values for ``default_context``, one-by-one before it
+        does the same for ``extra_context``.
+
+        request.param:
+            - {}
+            - {'author': 'alice'}
+            - {'project_slug': 'helloworld'}
+            - {'author': 'bob', 'project_slug': 'foobar'}
+        """
+        return request.param
